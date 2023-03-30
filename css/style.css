@@ -1,0 +1,19 @@
+#header{
+    background-image: url("/img/fondo.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Varela+Round);
+
+#color {
+  background-color: #F5F3C1;
+}
+
+table{
+    border-spacing: 4534340px;
+}
+
+
+
