@@ -1,6 +1,9 @@
+import mySystem from "./components/mySystem.js";
+
+
+mySystem.Show();
+
 let myFormularioIngresos = document.querySelector("#myFormularioIngresos");
-
-
 
 myFormularioIngresos.addEventListener("submit", (e)=>{
     e.preventDefault();
