@@ -45,46 +45,21 @@
     
     </div>
     <div class="justify-content-center" id="diagramas">
-        <div id="main" style="width: 600px;height:400px;"></div>
-      <script type="text/javascript">
+        
+        <div class="container text-white text-center">
+            <div class="row align-items-center  my-2 py-2">
+                <div class="col">
+                    <div id="ingresos" style="width: 600px;height:400px;"></div>
+                </div>
+                <div class="col">
+                    <div id="Egresos" style="width: 600px;height:400px;"></div>
+                </div>
+                <div class="col align-items-center">
+                    <div id="Total" style="width: 600px;height:400px;" class=""></div>
+                </div>
+            </div>
          
-         var chartDom = document.getElementById('main');
-          var myChart = echarts.init(chartDom);
-          var option;
-
-          option = {
-          title: [
-              {
-              text: 'Ingresos'
-              }
-          ],
-          polar: {
-              radius: [30, '80%']
-          },
-          radiusAxis: {
-              max: 4
-          },
-          angleAxis: {
-              type: 'category',
-              data: ['a', 'b', 'c', 'd'],
-              startAngle: 75
-          },
-          tooltip: {},
-          series: {
-              type: 'bar',
-              data: [2, 1.2, 2.4, 3.6],
-              coordinateSystem: 'polar',
-              label: {
-              show: true,
-              position: 'middle',
-              formatter: '{b}: {c}'
-              }
-          },
-          animation: false
-          };
-
-          option && myChart.setOption(option);
-        </script>
+        </div>
     </div>
 </body>
 </html>

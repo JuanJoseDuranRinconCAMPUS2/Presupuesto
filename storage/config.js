@@ -18,8 +18,18 @@ export default{
                     }],
 
                     
-                }
+                },
 
+                tablaIngresos:{
+                    id: [],
+                    valor: [],
+                    max: [],
+                },
+                tablaEgresos:{
+                    id: [],
+                    valor: [],
+                    max: [],
+                }
             },
 
         }))        
