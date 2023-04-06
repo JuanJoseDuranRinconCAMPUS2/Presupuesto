@@ -2,20 +2,24 @@ export default{
     dataMySystem(){
         localStorage.setItem("mySystem", JSON.stringify({
             valores:{
-                Presupuesto:"",
+                Presupuesto: 0,
+
                 ingresos:{
                     number:"",
-                    data:[]
+                    datos:[ ]
                 },
                 egreso:{
                     number:"",
+                    datos: [ ],
                     porcentaje:"",
-
-                    data:[{
-                        datos:[],
-                        porcentaje:[],
+                    conteo:[{
+                        datos:[ ],
+                        porcentaje:[ ],
                     }],
+
+                    
                 }
+
             },
 
         }))        
