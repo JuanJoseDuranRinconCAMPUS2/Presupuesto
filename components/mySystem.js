@@ -215,7 +215,7 @@ export default{
                 option3 = {
                     title: [
                         {
-                        text: 'Egresos'
+                        text: 'Total'
                         }
                     ],
                     polar: {

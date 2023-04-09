@@ -42,7 +42,7 @@ export let wsMySystem = {
                       </thead>
                       <tbody>
                         
-                        ${p1.ingresos.datos.map((val, id)=>{return `<tr><th>${val.Descripcion}</th><th>${val.dinero}</th></tr>`}).join("")}
+                        ${p1.ingresos.datos.map((val, id)=>{return `<tr><th>${val.Descripcion}</th><th>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'COP' }).format(val.dinero)}</th></tr>`}).join("")}
                         
                       </tbody>
                 </table>
@@ -57,7 +57,7 @@ export let wsMySystem = {
                       </thead>
                       <tbody>
 
-                      ${p1.egreso.datos.map((val, id)=>{return `<tr><th>${val.Descripcion}</th><th>${val.dinero}</th></tr>`}).join("")}
+                      ${p1.egreso.datos.map((val, id)=>{return `<tr><th>${val.Descripcion}</th><th>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'COP' }).format(val.dinero)}${p1.egreso.conteo.map((val,id2)=>{return `${val.porcentaje[id]}%</th>`})}</tr>`}).join("")}
 
                       </tbody>
                 </table>
