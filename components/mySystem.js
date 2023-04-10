@@ -1,4 +1,4 @@
-import config from "/storage/config.js";
+import config from "./storage/config.js";
 let myFormularioIngresos = document.querySelector("#myFormularioIngresos");
 
 // Creamos las variables que utilizaremos mas adelante
