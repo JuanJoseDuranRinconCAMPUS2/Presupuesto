@@ -1,4 +1,4 @@
-import mySystem from "./components/mySystem.js";
+import mySystem from "/components/mySystem.js";
 
 
 mySystem.Show();
