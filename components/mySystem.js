@@ -1,4 +1,4 @@
-import config from "./storage/config.js";
+import config from "/storage/config.js";
 let myFormularioIngresos = document.querySelector("#myFormularioIngresos");
 
 // Creamos las variables que utilizaremos mas adelante
@@ -63,23 +63,32 @@ export default{
                         val.datos.unshift(data.dinero);
                         recorrido = 0;
                         val.datos.map((val1,id)=>{
-                            porcentajeVar = Math.abs(parseInt((val1)*100)/numberEgresos) * -1;
+                            porcentajeVar = (parseInt((val1)*100)/numberEgresos);
+                            porcentajeVar.toFixed(2)
                             val.porcentaje.push(porcentajeVar);
                             recorrido++
-                            console.log(porcentajeVar);
+                            console.log(`${val.porcentaje}`);
                         })
+                        if (val.porcentaje.length >= 2){
+                            val.porcentaje.shift()
+                            console.log("llamen a dios")
+                            }
                     })
 
                     this.valores.egreso.datos.unshift(data);
                     this.valores.egreso.number =  new Intl.NumberFormat('en-US', { style: 'currency', currency: 'COP' }).format(numberEgresos);
                 break;
             };
-            presupuesto = numberIngresos -(-numberEgresos);
+            presupuesto = numberIngresos -(Math.abs(parseInt(numberEgresos) * -1));
             this.valores.Presupuesto = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'COP' }).format(presupuesto);
             porcentajeTotal = -((numberEgresos/numberIngresos)*100);
-            this.valores.egreso.porcentaje = parseInt(porcentajeTotal);
+            this.valores.egreso.porcentaje = parseFloat(porcentajeTotal);
             myFormularioIngresos.reset();
             
+
+            localStorage.setItem("mySystem", JSON.stringify(this));
+            console.log();
+
             const ws = new Worker("storage/wsMySystem.js", {type: "module"});
             let id = [];
             let count= 0;

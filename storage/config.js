@@ -1,6 +1,7 @@
 export default{
     dataMySystem(){
-        localStorage.setItem("mySystem", JSON.stringify({
+        let prueba = localStorage.getItem("mySystem");
+        if (prueba === null) {localStorage.setItem("mySystem", JSON.stringify({
             valores:{
                 Presupuesto: 0,
 
@@ -32,6 +33,7 @@ export default{
                 }
             },
 
-        }))        
+        }))  
+        }
     }
 }
