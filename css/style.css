@@ -2,7 +2,7 @@
 
 
 #header{
-    background-image: url("/img/fondo.jpg");
+    background-image: url("/img/fondos.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -14,6 +14,17 @@
   background-color: #FFE6C7;
 }
 
+#marcadorIngresos{
+  background-color: #90AACB;
+}
+
+#marcadorEgresos{
+  background-color: #E14D2A;
+}
+
+#bodyInput{
+  background-color: #FFA559;
+}
 table{
     border-spacing: 4534340px;
 }
@@ -42,7 +53,7 @@ table{
 }
 
 .form::before {
-  content: '¿Quieres Hacer Tu Presupuesto Semanal?';
+  content: '¿Quieres Hacer Tu Presupuesto Mensual?';
   color: var(--col2);
   font-size: 1.2em;
   font-weight: 700;
@@ -362,5 +373,6 @@ label:has(select:valid) {
     ;
   }  
 }
+
 
 

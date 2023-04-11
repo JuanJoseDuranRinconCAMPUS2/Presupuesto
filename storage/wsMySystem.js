@@ -12,7 +12,7 @@ export let wsMySystem = {
         <h1 class="text-center text-white">${(p1.Presupuesto)}</h1>
         <br>
         <div class="container text-white text-center">
-            <div class="row align-items-center bg-info my-2 py-2">
+            <div class="row align-items-center my-2 py-2" id="marcadorIngresos">
                 <div class="col">
                     INGRESOS
                 </div>
@@ -21,7 +21,7 @@ export let wsMySystem = {
 
                 </div>
             </div>
-            <div class="row align-items-center bg-danger my-3 py-2">
+            <div class="row align-items-center my-3 py-2" id="marcadorEgresos">
                 <div class="col">
                     EGRESOS
                 </div>
@@ -64,10 +64,20 @@ export let wsMySystem = {
                       </thead>
                       <tbody>
 
-                      ${p1.egreso.datos.map((val, id)=>{return `<tr><th>${val.Descripcion}</th><th>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'COP' }).format(val.dinero)}${p1.egreso.conteo.map((val,id2)=>{return `${val.porcentaje[id]}% <i class="bi bi-x-circle"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                      <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                    </svg></i></th>`})}</tr>`}).join("")}
+                      ${p1.egreso.datos.map((val, id)=>{
+                        return `
+                        <tr>
+                        <th>${val.Descripcion}</th>
+                        <th>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'COP' }).format(val.dinero)}
+                        ${p1.egreso.conteo.map((val,id2)=>{return `${val.porcentaje[id]}% 
+                        <button type="submit" value="Guardar" class="btn btn-outline-danger">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                                <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"></path>
+                            </svg>
+                        </button>
+                        </th>`})}
+                        </tr>`}).join("")}
 
                       </tbody>
                 </table>
