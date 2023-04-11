@@ -292,7 +292,8 @@ label:has(select:valid) {
   color: hsla(0, 0%, 0%, .9);
   font: normal 40px Varela Round, sans-serif;
   letter-spacing: 5px;
-
+ left: 0%;
+ right: 0%;
   position: absolute;
   text-align: center;
   text-transform: uppercase;

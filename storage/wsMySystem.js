@@ -6,6 +6,9 @@ export let wsMySystem = {
         <h1  class="text-center" id="title">
         Presupuesto
         </h1>
+        <br>
+        <br>
+        <br>
         <h1 class="text-center text-white">${(p1.Presupuesto)}</h1>
         <br>
         <div class="container text-white text-center">
