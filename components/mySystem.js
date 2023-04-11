@@ -101,7 +101,7 @@ export default{
             let doc = new DOMParser().parseFromString(e.data, "text/html");
             document.querySelector(id[count]).innerHTML = e.data;
             (id.length-1==0) ? ws.terminate(): count++;
-        });checkbox
+        });
         //if para definir hacia donde sera enviada la informacion
         if (data.Sis == "positivo") {
             this.valores.tablaIngresos.id.unshift(data.Descripcion);
@@ -120,7 +120,7 @@ export default{
               if (arr[i] > maximo) {
                 maximo = arr[i];
               }
-            }checkbox
+            }
             return maximo;
           }
 
