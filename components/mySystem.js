@@ -63,8 +63,8 @@ export default{
                         val.datos.unshift(data.dinero);
                         recorrido = 0;
                         val.datos.map((val1,id)=>{
-                            porcentajeVar = (parseInt((val1)*100)/numberEgresos);
-                            porcentajeVar.toFixed(2)
+                            porcentajeVar = (parseInt((val1))/numberEgresos)*100;
+                            porcentajeVar = porcentajeVar.toFixed(2)
                             val.porcentaje.push(porcentajeVar);
                             recorrido++
                             console.log(`${val.porcentaje}`);
@@ -82,7 +82,7 @@ export default{
             presupuesto = numberIngresos -(Math.abs(parseInt(numberEgresos) * -1));
             this.valores.Presupuesto = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'COP' }).format(presupuesto);
             porcentajeTotal = -((numberEgresos/numberIngresos)*100);
-            this.valores.egreso.porcentaje = parseFloat(porcentajeTotal);
+            this.valores.egreso.porcentaje = porcentajeTotal;
             myFormularioIngresos.reset();
             
 
@@ -101,7 +101,7 @@ export default{
             let doc = new DOMParser().parseFromString(e.data, "text/html");
             document.querySelector(id[count]).innerHTML = e.data;
             (id.length-1==0) ? ws.terminate(): count++;
-        });
+        });checkbox
         //if para definir hacia donde sera enviada la informacion
         if (data.Sis == "positivo") {
             this.valores.tablaIngresos.id.unshift(data.Descripcion);
@@ -120,7 +120,7 @@ export default{
               if (arr[i] > maximo) {
                 maximo = arr[i];
               }
-            }
+            }checkbox
             return maximo;
           }
 

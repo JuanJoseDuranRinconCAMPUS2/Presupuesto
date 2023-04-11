@@ -14,11 +14,11 @@
   background-color: #FFE6C7;
 }
 
-#marcadorIngresos{
-  background-color: #90AACB;
+#marcadorIngresos, #tablitaBonitaIngresos{
+  background-color: #90AACB !important;  
 }
 
-#marcadorEgresos{
+#marcadorEgresos, #tablitaBonitaEgresos{ 
   background-color: #E14D2A;
 }
 
