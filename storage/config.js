@@ -6,11 +6,11 @@ export default{
                 Presupuesto: 0,
 
                 ingresos:{
-                    number:"",
+                    number: 0,
                     datos:[ ]
                 },
                 egreso:{
-                    number:"",
+                    number: 0,
                     datos: [ ],
                     porcentaje:"",
                     conteo:[{

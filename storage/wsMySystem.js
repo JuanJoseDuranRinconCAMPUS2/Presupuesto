@@ -8,7 +8,7 @@ export let wsMySystem = {
         <br>
         <br>
         <br>
-        <h1 class="text-center text-white">${(p1.Presupuesto)}</h1>
+        <h1 class="text-center text-white">${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'COP' }).format(p1.Presupuesto)}</h1>
         <br>
         <div class="container text-white text-center">
             <div class="row align-items-center my-2 py-2" id="marcadorIngresos">
@@ -16,7 +16,7 @@ export let wsMySystem = {
                     INGRESOS
                 </div>
                 <div class="col">
-                ${p1.ingresos.number}
+                ${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'COP' }).format(p1.ingresos.number)}
 
                 </div>
             </div>
@@ -25,7 +25,7 @@ export let wsMySystem = {
                     EGRESOS
                 </div>
                 <div class="col">
-                ${p1.egreso.number} % ${p1.egreso.porcentaje}
+                ${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'COP' }).format(p1.egreso.number)} -% ${(p1.egreso.porcentaje*-1)}
                 </div>
             </div>
         </div>

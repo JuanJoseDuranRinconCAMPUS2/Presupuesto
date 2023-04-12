@@ -50,38 +50,37 @@ export default{
             //operaciones
             switch(data.Sis){
                 case "positivo":
-                    numberIngresos = numberIngresos + parseInt(data.dinero);
                     this.valores.ingresos.datos.unshift(data);
-                    this.valores.ingresos.number =  new Intl.NumberFormat('en-US', { style: 'currency', currency: 'COP' }).format(numberIngresos);
-                    
+                    this.valores.ingresos.number =  parseInt(this.valores.ingresos.number) + parseInt(data.dinero);
+     
                 break;
                 case "negativo":
-                    numberEgresos =  numberEgresos - parseInt(data.dinero);
-                    console.log(numberEgresos);
+                    
+                this.valores.egreso.datos.unshift(data);
+                this.valores.egreso.number =  parseInt(this.valores.egreso.number) + parseInt(data.dinero);
+                console.log(this.valores.egreso.number);
+
+                    
                     this.valores.egreso.conteo.map((val,id)=>{
                         val.porcentajes= [];
                         val.datos.unshift(data.dinero);
                         recorrido = 0;
                         val.datos.map((val1,id)=>{
-                            porcentajeVar = (parseInt((val1))/numberEgresos)*100;
+                            
+                            porcentajeVar = (parseInt((val1))/this.valores.egreso.number)*100;
                             porcentajeVar = porcentajeVar.toFixed(2)
                             val.porcentaje.push(porcentajeVar);
                             recorrido++
                             console.log(`${val.porcentaje}`);
                         })
-                        if (val.porcentaje.length >= 2){
-                            val.porcentaje.shift()
-                            console.log("llamen a dios")
-                            }
                     })
-
-                    this.valores.egreso.datos.unshift(data);
-                    this.valores.egreso.number =  new Intl.NumberFormat('en-US', { style: 'currency', currency: 'COP' }).format(numberEgresos);
+                    
                 break;
             };
-            presupuesto = numberIngresos -(Math.abs(parseInt(numberEgresos) * -1));
-            this.valores.Presupuesto = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'COP' }).format(presupuesto);
-            porcentajeTotal = -((numberEgresos/numberIngresos)*100);
+            presupuesto = this.valores.ingresos.number -(Math.abs(this.valores.egreso.number * -1));
+            this.valores.Presupuesto = presupuesto
+            porcentajeTotal = -((this.valores.egreso.number/this.valores.ingresos.number)*100);
+            porcentajeTotal = porcentajeTotal.toFixed(2)
             this.valores.egreso.porcentaje = porcentajeTotal;
             myFormularioIngresos.reset();
             
@@ -139,16 +138,16 @@ export default{
 
         let maxEgreso = encontrarMaximo(maximoEgreso);
         
-        let maximoTotal = [presupuesto, numberIngresos, numberEgresos];
+        let maximoTotal = [presupuesto, this.valores.ingresos.number, this.valores.egreso.number];
         function encontrarMaximo(arr) {
             let maximo = arr[0];
-            for (let i = 0; i < arr.length; i++) {
-              if (arr[i] > maximo) {
+           for (let i = 0; i < arr.length; i++) {
+             if (arr[i] > maximo) {
                 maximo = arr[i];
-              }
+               }
             }
             return maximo;
-          }
+           }
 
         let maxTotal = encontrarMaximo(maximoTotal);
 
@@ -221,39 +220,39 @@ export default{
                 option && myChart2.setOption(option2);
 
                 //tabla 3
-                option3 = {
-                    title: [
-                        {
-                        text: 'Total'
-                        }
-                    ],
-                    polar: {
-                        radius: [30, '80%']
-                    },
-                    radiusAxis: {
-                        max: maxTotal
-                    },
-                    color: '#808000',
-                    angleAxis: {
-                        type: 'category',
-                        data: ["Presupuesto", "Ingresos", "Egresos"],
-                        startAngle: 75
-                    },
-                    tooltip: {},
-                    series: {
-                        type: 'bar',
-                        data: [presupuesto, numberIngresos,(numberEgresos * -1)],
-                        coordinateSystem: 'polar',
-                        label: {
-                        show: true,
-                        position: 'middle',
-                        formatter: '{b}: {c}'
-                        }
-                    },
-                    animation: false
-                    };
-                    console.log(this.valores.Presupuesto);
-                    option && myChart3.setOption(option3);
+                   option3 = {
+                     title: [
+                         {
+                         text: 'Total'
+                         }
+                     ],
+                     polar: {
+                         radius: [30, '80%']
+                     },
+                     radiusAxis: {
+                         max: maxTotal
+                     },
+                     color: '#808000',
+                     angleAxis: {
+                         type: 'category',
+                         data: ["Presupuesto", "Ingresos", "Egresos"],
+                         startAngle: 75
+                     },
+                     tooltip: {},
+                     series: {
+                         type: 'bar',
+                         data: [presupuesto, this.valores.ingresos.number,this.valores.egreso.number],
+                         coordinateSystem: 'polar',
+                         label: {
+                         show: true,
+                         position: 'middle',
+                         formatter: '{b}: {c}'
+                         }
+                     },
+                     animation: false
+                     };
+                     console.log(this.valores.Presupuesto);
+                     option && myChart3.setOption(option3);
          });
          
         },       
